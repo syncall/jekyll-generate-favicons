@@ -16,9 +16,9 @@ jobs:
           ruby-version: '3.3'
       - name: Build gem
         run: |
-          gem build jekyll-design-tag-framework.gemspec --output jekyll-design-tag-framework.gem
+          gem build jekyll-generate-favicons.gemspec --output jekyll-generate-favicons.gem
       - name: Publish
         env:
           GEM_HOST_API_KEY: ${{ secrets.GEM_PUBLISH_SECRET }}
         run: |
-          gem push jekyll-design-tag-framework.gem
+          gem push jekyll-generate-favicons.gem
