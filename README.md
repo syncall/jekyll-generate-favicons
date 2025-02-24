@@ -10,7 +10,7 @@ Define an `icon` and/or `apple_touch_icon` in your `_config.yml` to enable auto 
 
 Will search directly for the file or look it up in `assets/img`
 
-Include the generated files with a `favicons` tag in your html `{% raw %}<head>{% endraw %}`:
+Include the generated files with a `favicons` tag in your html `<head>`:
 
     {% favicons %}
 
