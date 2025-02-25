@@ -68,7 +68,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
 
     # We use a small size for legacy browser for now, modern ones should work with svgs
     dst_file = File.join(site.dest, "favicon.ico")
-    icon_size = 32
+    icon_size = 48
     unless File.exist?(dst_file)
       cmd = "magick #{src_file.shellescape} -alpha off -resize #{icon_size}x#{icon_size} #{dst_file.shellescape}"
       system(cmd)
