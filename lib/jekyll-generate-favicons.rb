@@ -21,15 +21,15 @@ module Jekyll
         s = StringIO.new
         if icon_file
           icon_path, _ = Jekyll::GenerateFavicons::find_icon_file(site, icon_file)
-          s << "<link rel=\"icon\" type=\"image/x-icon\" sizes=\"48x48\" href=\"#{baseurl}/favicon.ico\">\n"
-          s << "<link rel=\"icon\" type=\"image/svg+xml\" sizes=\"any\" href=\"#{baseurl}/#{icon_path}\">\n"
+          s << "<link rel=\"icon\" type=\"image/x-icon\" sizes=\"48x48\" href=\"#{baseurl}/favicon.ico\"/>\n"
+          s << "<link rel=\"icon\" type=\"image/svg+xml\" sizes=\"any\" href=\"#{baseurl}/#{icon_path}\"/>\n"
         end
 
         if apple_icon_file
           # apple_icon_file, _ = Jekyll::GenerateFavicons::find_icon_file(site, apple_icon_file)
           default_path = Jekyll::GenerateFavicons::FaviconTag::DEFAULT_PATH
 
-          [120, 152, 167, 180].each { |size|
+          [76, 120, 152, 180].each { |size|
             icon_url = "#{site.baseurl}/#{default_path}/apple-touch-icon-#{size}.png"
             icon_url = "#{site.baseurl}/apple-touch-icon.png" if size == 180
             s << "<link rel=\"apple-touch-icon\" sizes=\"#{size}x#{size}\" href=\"#{icon_url}\">\n"
@@ -89,7 +89,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
     dst_dir = File.join(site.dest, Jekyll::GenerateFavicons::FaviconTag::DEFAULT_PATH)
     FileUtils.mkdir_p dst_dir
 
-    [120, 152, 167, 180].each { |size|
+    [76, 120, 152, 180].each { |size|
       dst_file = File.join(dst_dir, "apple-touch-icon-#{size}.png")
       # Default is big
       dst_file = dst_default_file if size == 180
