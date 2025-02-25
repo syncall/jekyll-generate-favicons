@@ -17,23 +17,24 @@ Putting the Gem in the `jekyll_plugins` group will directly enable it in Jekyll.
 plugins:
   - jekyll-generate-favicons
 ```
-    
+
 #### 2. Define an `icon` and/or `apple_touch_icon` in your `_config.yml` to enable auto generation.
 
 ```yaml
 icon: favicon.svg
 apple_touch_icon: apple-touch-icon.svg
+apple_mask_icon:
+  src: apple-mask-icon.svg
+  color: black
 ```
 
 The plugin will search directly for the file or look it up under `assets/img`
 
+`apple_mask_icon` will not transform the svg but only insert the reflected link the head. See [Apple Guidelines](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/pinnedTabs/pinnedTabs.html) for details.
+
 #### 3. Include the generated files with a `favicons` tag in your html `<head>`:
 
     {% favicons %}
-
-### Contributors
-
-Feel free to open up a pull request if you want to extend the funcitonality!
 
 ### License
 

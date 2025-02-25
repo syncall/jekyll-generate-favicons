@@ -34,7 +34,17 @@ module Jekyll
               s << "<link rel=\"apple-touch-icon\" sizes=\"#{size}x#{size}\" href=\"#{site.baseurl}/assets/img/favicons/apple-touch-icon-#{size}.png\">\n"
             }
           end
+          apple_mask_icon = site.config["apple_mask_icon"]
+          if apple_mask_icon
+            mask_src = apple_mask_icon["src"]
+            mask_color = apple_mask_icon["color"]
+            mask_color = "black" unless mask_color
 
+            mask_src = apple_mask_icon unless mask_src
+
+            icon_path, _ = Jekyll::GenerateFavicons::find_icon_file(site, mask_src)
+            s << "<link rel=\"mask-icon\" href=\"#{baseurl}/#{icon_path}\" color=\"#{mask_color}\">"
+          end
           s.string
         end
       end
